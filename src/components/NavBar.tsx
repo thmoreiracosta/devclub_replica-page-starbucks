@@ -5,13 +5,15 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-white shadow-sm">
-      <nav className="flex items-center justify-between px-6 py-4">
+      <nav className="flex items-center justify-between px-10 py-6">
         <div className="flex items-center space-x-8">
-          <img
-            src="../public/assets/starbucks-nav-logo.svg"
-            alt="Starbucks"
-            className="h-14 w-auto"
-          />
+          <a href="/home">
+            <img
+              src="../public/assets/starbucks-nav-logo.svg"
+              alt="Starbucks"
+              className="h-14 w-auto"
+            />
+          </a>
 
           <div className="hidden md:flex items-center space-x-6">
             <a
@@ -42,11 +44,13 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="tracking-mega text-[10px] font-bold text-gray-600">
+              <div className="tracking-mega text-[8px] font-bold text-gray-600">
                 STARBUCKS®
               </div>
-              <div className="text-[20px] font-bold text-gray-900">HISTÓRIAS</div>
-              <div className="tracking-mega text-[10px] font-bold text-gray-600">
+              <div className="text-[20px] font-bold text-gray-900">
+                HISTÓRIAS
+              </div>
+              <div className="tracking-mega text-[8px] font-bold text-gray-600">
                 LATIN AMERICA
               </div>
             </a>
