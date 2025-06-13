@@ -1,8 +1,28 @@
+import { useState } from "react";
+
+type CupClickProps = {
+  image: string;
+  color: string;
+  id: string;
+};
+
 export default function DevClub() {
+  const [copChange, setCopChange] = useState("/assets/img1.png");
+  const [highlightColor, setHighlightColor] = useState("bg-green-400");
+  const [selectedCup, setSelectedCup] = useState("cup1");
+
+  const handleCupClick = ({ image, color, id }: CupClickProps) => {
+    setCopChange(image);
+    setHighlightColor(color);
+    setSelectedCup(id);
+  };
+
   return (
     <div className="relative min-h-screen bg-white overflow-hidden">
       {/* Meia-lua fixa no canto inferior direito */}
-      <div className="absolute bottom-0 right-0 w-[1200px] h-[1200px] rounded-full bg-green-400 opacity-50 translate-x-1/2 translate-y-1/2 z-0"></div>
+      <div
+        className={`absolute bottom-0 right-0 w-[1200px] h-[1200px] rounded-full bg-green-400 opacity-50 translate-x-1/2 translate-y-1/2 z-0 ${highlightColor}`}
+      ></div>
 
       {/* Conteúdo principal com texto e copo grande */}
       <div className="relative z-10 flex justify-between items-center px-40 pt-28">
@@ -30,7 +50,7 @@ export default function DevClub() {
         {/* Copo grande à frente da meia-lua */}
         <div className="relative w-[400px] h-[400px]">
           <img
-            src="/assets/img1.png"
+            src={copChange}
             alt="copo starbucks"
             className="relative z-10 w-full object-contain"
           />
@@ -39,24 +59,21 @@ export default function DevClub() {
 
       {/* 3 copos centralizados abaixo */}
       <div className="relative z-10 flex justify-center items-center gap-6 mt-20">
-        <img
-          src="/assets/thumb1.png"
-          alt="thumb 1"
-          className="w-24 cursor-pointer transition-transform duration-300 transform hover:scale-110"
-          onClick={() => console.log("Selecionado: Copo 1")} // lógica virá depois
-        />
-        <img
-          src="/assets/thumb2.png"
-          alt="thumb 2"
-          className="w-24 cursor-pointer transition-transform duration-300 transform hover:scale-110"
-          onClick={() => console.log("Selecionado: Copo 2")}
-        />
-        <img
-          src="/assets/thumb3.png"
-          alt="thumb 3"
-          className="w-24 cursor-pointer transition-transform duration-300 transform hover:scale-110"
-          onClick={() => console.log("Selecionado: Copo 3")}
-        />
+        {[
+          { id: "cup1", src: "/assets/img1.png", color: "bg-green-400" },
+          { id: "cup2", src: "/assets/img2.png", color: "bg-[#f8f1b2]" },
+          { id: "cup3", src: "/assets/img3.png", color: "bg-pink-600" },
+        ].map((cup) => (
+          <img
+            key={cup.id}
+            src={cup.src}
+            alt={cup.id}
+            className="w-24 cursor-pointer transition-transform duration-300 transform hover:scale-150"
+            onClick={() =>
+              handleCupClick({ image: cup.src, color: cup.color, id: cup.id })
+            }
+          />
+        ))}
       </div>
     </div>
   );
