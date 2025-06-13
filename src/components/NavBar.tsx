@@ -1,13 +1,15 @@
 import { useState } from "react";
+//import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  //const navigate = useNavigate();
 
   return (
     <header className="w-full bg-white shadow-sm">
       <nav className="flex items-center justify-between px-10 py-6">
         <div className="flex items-center space-x-8">
-          <a href="/home">
+          <a href="/">
             <img
               src="../public/assets/starbucks-nav-logo.svg"
               alt="Starbucks"
@@ -33,6 +35,12 @@ export default function Navbar() {
               className="text-sm font-bold text-gray-800 hover:text-green-700"
             >
               IMPACTO SOCIAL
+            </a>
+            <a
+              href="/devclub"
+              className="text-sm font-bold text-gray-800 hover:text-green-700"
+            >
+              DEVCLUB
             </a>
           </div>
         </div>
